@@ -1,0 +1,36 @@
+package app.com.example.android.project0;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private Toast toast;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void toastMessages(View view) { //view being what was clicked
+        Button button = (Button) view; //casting to type Button
+        String buttonText = (String) button.getText(); //retrieves string defined in xml
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        CharSequence text = buttonText + " coming soon!";
+
+        /*if statement suggested from https://discussions.udacity.com/t/toast-function-for-each-button/20868/6?u=thomasvu
+        Not sure how to interpret it*/
+
+        if (toast !=null)
+        {
+            toast.cancel();
+        }
+        toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+}
